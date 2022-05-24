@@ -13,52 +13,22 @@
     <title>Consulta do Quadrado></title>
     <style>
 		
-      	div{
+      	.quad{
     background-color: <?php echo $cor ?>;
  width:<?php echo $lado ?>px;
  height:<?php echo $lado ?>px;
 
  }
-
     </style>
 </head>
 <body>
-    <header>
-   
-  
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-
-            <li>
-
-            <a class="nav-link" href="	consulta.php">Lista</a>
-
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="teste.php">Teste</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="cadquad.php">Cadastro</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="processo.php">Processo</a>
-            </li>
-    
-    
-            <ul>
-        </div>
-        </div>
-		<br>
-		<br>
-    </nav>
+    <?php
+        require_once "menu.php";
+    ?>
     <br>
-    <br>
-    </header>
     <br>
     <fieldset>
+        <center>
         <?php  
             if ($acao = "salvar") {
                 include_once "class/quadrado.class.php";
@@ -67,7 +37,8 @@
             }
             ?>
             <hr>
-            <div class = "square"></div>
+            <div class = "quad"></div>
+        </center>
     </fieldset>
     <br>
 </body>
