@@ -46,7 +46,7 @@
                         <input type="radio" name="tipo" value="2" class="form-check-input" <?php if ($tipo == "2") echo "checked" ?>> Lado<br>
                         <input type="radio" name="tipo" value="3" class="form-check-input" <?php if ($tipo == "3") echo "checked" ?>> Cor<br>
                     <br>
-                        <button type="submit" name="processo" id="processo" class="btn btn-dark">tipor</button>
+                        <button type="submit" name="processo" id="processo" class="btn btn-dark">Consulta</button>
                     
                 </div>
                 <hr>
