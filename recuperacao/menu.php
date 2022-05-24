@@ -6,21 +6,20 @@
        
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="menu.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="quad.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Consutas
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="quad.php">Quadrados</a></li>
-
           </ul>
         </li>
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="cadquad.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Cadastros
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="cadquad.php">Cadastro de Quadrados</a></li>
-        </li>
+    
         
       </ul>
      
