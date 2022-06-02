@@ -3,6 +3,7 @@
 <?php
     $lado = isset($_GET['lado']) ? $_GET['lado'] : 0;
     $cor = isset($_GET['cor']) ? $_GET['cor'] : "";
+    $idtab = isset($_GET['tabuleiro_idtabuleiro']) ? $_GET['tabuleiro_idtabuleiro'] : 0;
 ?>
 
 <html lang="pt-br">
@@ -32,12 +33,13 @@
         <?php  
             if ($acao = "salvar") {
                 include_once "class/quadrado.class.php";
-                $quad = new Quadrado("", $lado, $cor);
-                echo $quad;
+                $quad = new Quadrado("", $lado, $cor, $idtab);
+                echo $quad->desenha();
+                echo "<br>".$quad;
             }
             ?>
             <hr>
-            <div class = "quad"></div>
+            <!-- <div class = "quad"></div> -->
         </center>
     </fieldset>
     <br>
