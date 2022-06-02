@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <?php
     include_once "processo.php";
+    require_once "class/quadrado.class.php";
+    $idquadrado = isset($_GET['idquadrado']) ? $_GET['idquadrado'] : "";
     $processo = isset($_GET['processo']) ? $_GET['processo'] : "";
     $dados;
     if ($processo == 'editar'){
-        $id = isset($_GET['id']) ? $_GET['id'] : "";
-    if ($id > 0)
-        $dados = buscarDados($id);
+        $quad = new Quadrado($idquadrado, 1, "1", 1);
+        $lista = $quad->listar(1, $idquadrado);
+        $quad->setLado($lista[0]['lado']);
+        $quad->setCor($lista[0]['cor']);
+        $quad->setIdTab($lista[0]['tabuleiro_idtabuleiro']);
+ 
 }
     $title = "Cadastro de Quadrado";
     // var_dump($dados);
@@ -34,14 +39,22 @@
                 <div class="form-group col-lg-3">
 
                 <p>ID</p>
-                    <input readonly  type="text" name="id" id="id" class="form-control" value="<?php if ($processo == "editar") echo $dados['id']; else echo 0; ?>"><br>
+                    <input readonly  type="text" name="idquadrado" id="idquadrado" class="form-control" value="<?php if ($processo == "editar") echo $quad->getId(); else echo 0; ?>"><br>
 
                 <p>Lado</p>
-                    <input name="lado" id="lado" type="text" required="true" class="form-control" value="<?php if ($processo == "editar") echo $dados['lado']; ?>" placeholder="Digite o lado"><br>         
+                    <input name="lado" id="lado" type="text" required="true" class="form-control" value="<?php if ($processo == "editar") echo $quad->getLado();; ?>" placeholder="Digite o lado"><br>         
                 
                 <p>Cor</p>
-                    <input name="cor" id="cor" type="color" required="true" class="form-control" value="<?php if ($processo == "editar") echo $dados['cor']; ?>" placeholder="Digite o cor"><br>
-               
+                    <input name="cor" id="cor" type="color" required="true" class="form-control" value="<?php if ($processo == "editar") echo $quad->getCor(); ?>" placeholder="Digite o cor"><br>
+                       <br>
+                <p> Escolha o Tabuleiro </p>
+                    <select name="tabuleiro_idtabuleiro"  id="tabuleiro_idtabuleiro" class="form-select" value="<?php if ($processo == "editar") echo $quad->getIdTab(); ?>">
+                        <?php
+                        require_once ("processo.php");
+                            echo lista_tabuleiro(0); 
+                        ?>
+        </select>
+                    <br>
                     <button name="processo" value="salvar" id="processo" type="submit" class="btn btn-dark">Salvar</button>
                         </div>
             </form>
