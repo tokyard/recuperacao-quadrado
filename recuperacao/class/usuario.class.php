@@ -103,7 +103,6 @@ require_once "conf/Conexao.php";
 
         return $str;
     }
-
     public function __toString(){
         $str = 
         "Nome do Usuário: ".$this->getNome().
@@ -111,5 +110,18 @@ require_once "conf/Conexao.php";
         "<br>Senha do Usuário: ".$this->getSenha();
         return $str;
     }
+     public function efetuaLogin($login, $senha) {
+            $pdo = Conexao::getInstance();
+            $login = $this->listar('nome', "login = '$login' AND senha = '$senha'");
+            if($login){
+                $_SESSION["nome"] = $login[0]['nome'];
+                return true;
+            }else{
+                return false;
+            }
         }
+     }
+    
+    
+
     ?>
