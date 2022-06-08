@@ -1,13 +1,20 @@
+<?php
+session_start();
+
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        
-        
+      <a class="nav-link active" aria-current="page" href="#"><?php print_r($_SESSION['nome']);?>  </a>
+    </a>
+    <a class="nav-link active" aria-current="page" href="login.php">| Sair |</a>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Consultas
+            Consultas |
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="quad.php">Quadrados</a></li>
@@ -18,15 +25,15 @@
         </li>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Cadastros
+            Cadastros |
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="cadquad.php">Cadastro de Quadrados</a></li>
           <li><a class="dropdown-item" href="cadtab.php">Cadastro de Tabuleiros</a></li>
           <li><a class="dropdown-item" href="caduser.php">Cadastro de Usuários</a></li>
-    
-        
       </ul>
+      <ul>
+     
      
     </div>
   </div>

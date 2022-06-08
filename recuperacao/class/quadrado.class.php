@@ -10,55 +10,54 @@ require_once "conf/Conexao.php";
         private $cor;
         private $tabuleiro_idtabuleiro;
 
-        public function __construct($idquadrado, $lado, $cor, $idtab) {
-            $this->setId($idquadrado);
-            $this->setLado($lado);
-            $this->setCor($cor);
-            $this->setIdTab($idtab);
+    public function __construct($idquadrado, $lado, $cor, $idtab) {
+    $this->setId($idquadrado);
+    $this->setLado($lado);
+    $this->setCor($cor);
+    $this->setIdTab($idtab);
         }
 
     
     
-        public function getId() {return $this->idquadrado;}
+    public function getId() {return $this->idquadrado;}
 
-        public function getLado() {return $this->lado;}
+    public function getLado() {return $this->lado;}
 
-        public function getCor() {return $this->cor;}
+    public function getCor() {return $this->cor;}
 
-        public function getIdTab() {return $this->tabuleiro_idtabuleiro;}
+    public function getIdTab() {return $this->tabuleiro_idtabuleiro;}
 
 
-        public function setId($idquadrado) {
-                return $this->idquadrado = $idquadrado;
+    public function setId($idquadrado) {
+    return $this->idquadrado = $idquadrado;
            }
 
-        public function setLado($lado) {
-                return $this->lado = $lado;
+    public function setLado($lado) {
+    return $this->lado = $lado;
             }
 
-        public function setCor($cor) {
-                return $this->cor = $cor;
+    public function setCor($cor) {
+    return $this->cor = $cor;
             }
             
-            public function setIdTab($idtab) {
-                return $this->tabuleiro_idtabuleiro = $idtab;
+     public function setIdTab($idtab) {
+     return $this->tabuleiro_idtabuleiro = $idtab;
             }
             
-    public function Area(){
-
-    $area = $this->lado * $this->lado;
-    return $area;
-    }
+     public function Area(){
+     $area = $this->lado * $this->lado;
+     return $area;
+     }
     
-    public function Perimetro(){
-        $perimetro = $this->lado * 4;
-        return $perimetro;
-    }
+     public function Perimetro(){
+         $perimetro = $this->lado * 4;
+         return $perimetro;
+     }
     
-    public function Diagonal(){
-        $diagonal = $this->lado * sqrt(2);
-        return $diagonal;
-    }
+     public function Diagonal(){
+         $diagonal = $this->lado * sqrt(2);
+         return $diagonal;
+     }
         
 
 
@@ -112,12 +111,9 @@ require_once "conf/Conexao.php";
         return $stmt->fetchALL();
     }
 
-
     function desenha(){
 
-
         $str = "<div style='width: ".$this->getLado()."px; height: ".$this->getLado()."px; background: ".$this->getCor()."'></div>";
-
         return $str;
     }
 
@@ -130,6 +126,20 @@ require_once "conf/Conexao.php";
         "<br>Perímetro: ". $this->Perimetro().
         "<br>Diagonal: ". $this->Diagonal(); 
             return $str;
+    }
+
+    public function efetuaLogin($login, $senha){
+        $pdo = Conexao::getInstance();
+        $sql = "SELECT nome FROM usuario WHERE login = '$login' AND senha = '$senha';";
+        $verificar = $pdo->query($sql)->fetchAll();
+        if($verificar){
+            $_SESSION['nome'] = $verificar[0]['nome'];
+            return true;
+        } else {
+            $_SESSION['nome'] = null;
+            return false;
+        }
+    
     }
         }
     ?>

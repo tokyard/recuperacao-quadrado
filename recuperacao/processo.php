@@ -19,32 +19,29 @@
     if ($processo == "salvar"){
         $idquadrado= isset($_POST['idquadrado']) ? $_POST['idquadrado'] : "";
         if ($idquadrado== 0){
-
             $quadrado = new Quadrado("", $_POST['lado'], $_POST['cor'], $_POST['tabuleiro_idtabuleiro']);
-            
             $resultado = $quadrado->inserir();
             header("location:quad.php");
         }
         else
-            
             $quadrado = new Quadrado($_POST['idquadrado'], $_POST['lado'], $_POST['cor'], $_POST['tabuleiro_idtabuleiro']);
             $resultado = $quadrado->editar();
             header("location:quad.php");        
     }
 
 //Consultar dados
-function exibir($chave, $dados){
-    $str = 0;
-    foreach($dados as $linha){
-        $str .= "<option value='".$linha[$chave[0]]."'>ID: ".$linha[$chave[0]]." | Lado: ".$linha[$chave[1]]."</option>";
-    }
-    return $str;
+    function exibir($chave, $dados){
+        $str = 0;
+        foreach($dados as $linha){
+        $str .= "<option selected value='".$linha[$chave[0]]."'>ID: ".$linha[$chave[0]]." | Lado: ".$linha[$chave[1]]."</option>";
+        }
+        return $str;
 }
 
-function lista_tabuleiro($idtabuleiro){
-    $tab = new Tabuleiro("","");
-    $lista = $tab->buscar($idtabuleiro);
-    return exibir(array('idtabuleiro', 'lado'), $lista);
+    function lista_tabuleiro($idtabuleiro){
+        $tab = new Tabuleiro("","");
+        $lista = $tab->buscar($idtabuleiro);
+        return exibir(array('idtabuleiro', 'lado'), $lista);
 
 }
     

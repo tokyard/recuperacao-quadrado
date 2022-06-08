@@ -30,8 +30,6 @@
             }
             ?>
         <hr>
-            <!-- <div class = "tab"></div> -->
-        </center>
     </fieldset>
     <br>
 </body>

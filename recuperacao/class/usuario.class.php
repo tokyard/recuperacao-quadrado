@@ -27,7 +27,6 @@ require_once "conf/Conexao.php";
 
         public function getSenha() {return $this->senha;}
 
-
         public function setId($idusuario) {
                 return $this->idusuario = $idusuario;
            }
@@ -97,10 +96,7 @@ require_once "conf/Conexao.php";
 
 
     function desenha(){
-
-
         $str = "<div style='width: ".$this->getNome()."px; height: ".$this->getNome()."px; background: ".$this->getLogin()."'></div>";
-
         return $str;
     }
     public function __toString(){
@@ -110,18 +106,20 @@ require_once "conf/Conexao.php";
         "<br>Senha do Usuário: ".$this->getSenha();
         return $str;
     }
-     public function efetuaLogin($login, $senha) {
-            $pdo = Conexao::getInstance();
-            $login = $this->listar('nome', "login = '$login' AND senha = '$senha'");
-            if($login){
-                $_SESSION["nome"] = $login[0]['nome'];
-                return true;
-            }else{
-                return false;
-            }
-        }
-     }
-    
-    
 
+    public function efetuaLogin($login, $senha){
+        $pdo = Conexao::getInstance();
+        $sql = "SELECT nome FROM usuario WHERE login = '$login' AND senha = '$senha';";
+        $verificar = $pdo->query($sql)->fetchAll();
+        if($verificar){
+            $_SESSION['nome'] = $verificar[0]['nome'];
+            return true;
+        } else {
+            $_SESSION['nome'] = null;
+            return false;
+        }
+    
+    }
+}
+        
     ?>

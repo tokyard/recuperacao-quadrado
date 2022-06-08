@@ -16,8 +16,8 @@
 		
       	.quad{
     background-color: <?php echo $cor ?>;
- width:<?php echo $lado ?>px;
- height:<?php echo $lado ?>px;
+    width:<?php echo $lado ?>px;
+    height:<?php echo $lado ?>px;
 
  }
     </style>
@@ -39,7 +39,6 @@
             }
             ?>
             <hr>
-            <!-- <div class = "quad"></div> -->
         </center>
     </fieldset>
     <br>
